@@ -507,6 +507,13 @@ cat > file21
 ``` 
 sort file21
 ## OUTPUT
+```
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1004 | Sit |  7000 | Dev
+1005 | Sam |  5000 | HR
+```
 
 
 cat > file22
@@ -520,14 +527,28 @@ cat > file22
 ``` 
 uniq file22
 ## OUTPUT
-
-
+```
+1001 | Ram | 10000 | HR
+1002 | tom |  5000 | Admin
+1003 | Joe |  7000 | Developer
+1005 | Sam |  5000 | HR
+1004 | Sit |  7000 | Dev
+```
 
 #Using tr command
 
 cat file23 | tr [:lower:] [:upper:]
  ## OUTPUT
-
+```
+1001 | RAM | 10000 | HR
+1001 | RAM | 10000 | HR
+1002 | TOM |  5000 | ADMIN
+1003 | JOE |  7000 | DEVELOPER
+1005 | SAM |  5000 | HR
+1004 | SIT |  7000 | DEV
+1003 | JOE |  7000 | DEVELOPER
+1001 | RAM | 10000 | HR
+```
 cat < urllist.txt
 ```
 www. yahoo. com
@@ -543,18 +564,33 @@ www. mrcet.... com
  ```
 cat urllist.txt | tr -d ' '
  ## OUTPUT
-
+```
+www.yahoo.com
+www.google.com
+www.mrcet....com
+```
 
  
 cat urllist.txt | tr -d ' ' | tr -s '.'
 ## OUTPUT
-
-
-
+```
+www.yahoo.com
+www.google.com
+www.mrcet.com
+```
 #Backup commands
 tar -cvf backup.tar *
 ## OUTPUT
-
+```
+bench.py
+file21
+file22
+file23
+hello.c
+hello.js
+readme.txt
+urllist.txt
+```
 
 mkdir backupdir
  
@@ -562,11 +598,33 @@ mv backup.tar backupdir
  
 tar -tvf backup.tar
 ## OUTPUT
-
+```
+drwxr-xr-x root/root         0 2024-08-13 09:40:25 backupdir/
+-rw-r--r-- root/root      9216 2024-08-13 09:40:03 backupdir/backup.tar
+-rw-r--r-- root/root       114 2020-07-05 23:17:07 bench.py
+-rw-r--r-- root/root       131 2024-08-13 09:30:38 file21
+-rw-r--r-- root/root       155 2024-08-13 09:31:30 file22
+-rw-r--r-- root/root       210 2024-08-13 09:36:31 file23
+-rw-r--r-- root/root        76 2020-07-03 14:45:56 hello.c
+-rw-r--r-- root/root        22 2020-06-26 14:57:33 hello.js
+-rw-r--r-- root/root       151 2020-07-05 23:19:13 readme.txt
+-rw-r--r-- root/root        52 2024-08-13 09:39:06 urllist.txt
+```
 
 tar -xvf backup.tar
 ## OUTPUT
-
+```
+backupdir/
+backupdir/backup.tar
+bench.py
+file21
+file22
+file23
+hello.c
+hello.js
+readme.txt
+urllist.txt
+```
 gzip backup.tar
 
 ls .gz
