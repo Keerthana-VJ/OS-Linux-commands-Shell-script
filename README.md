@@ -71,7 +71,7 @@ file1 file2 differ: char 1, line 1
 comm file1 file2
  ## OUTPUT
 ```
-anil aggarwal
+        anil aggarwal
         barun sengupta
         c.k. shukla
 chanchal singhvi
@@ -583,11 +583,15 @@ tar -cvf backup.tar *
 ## OUTPUT
 ```
 bench.py
+file1
+file11
+file2
 file21
 file22
 file23
 hello.c
 hello.js
+newfile
 readme.txt
 urllist.txt
 ```
@@ -599,16 +603,20 @@ mv backup.tar backupdir
 tar -tvf backup.tar
 ## OUTPUT
 ```
-drwxr-xr-x root/root         0 2024-08-13 09:40:25 backupdir/
--rw-r--r-- root/root      9216 2024-08-13 09:40:03 backupdir/backup.tar
+drwxr-xr-x root/root         0 2024-08-16 10:12:02 backupdir/
+-rw-r--r-- root/root     13312 2024-08-16 10:10:04 backupdir/backup.tar
 -rw-r--r-- root/root       114 2020-07-05 23:17:07 bench.py
--rw-r--r-- root/root       131 2024-08-13 09:30:38 file21
--rw-r--r-- root/root       155 2024-08-13 09:31:30 file22
--rw-r--r-- root/root       210 2024-08-13 09:36:31 file23
+-rw-r--r-- root/root        61 2024-08-16 09:48:52 file1
+-rw-r--r-- root/root        29 2024-08-16 09:52:03 file11
+-rw-r--r-- root/root        70 2024-08-16 09:49:11 file2
+-rw-r--r-- root/root       131 2024-08-16 10:06:47 file21
+-rw-r--r-- root/root       155 2024-08-16 10:07:30 file22
+-rw-r--r-- root/root       210 2024-08-16 10:02:59 file23
 -rw-r--r-- root/root        76 2020-07-03 14:45:56 hello.c
 -rw-r--r-- root/root        22 2020-06-26 14:57:33 hello.js
+-rw-r--r-- root/root        96 2024-08-16 09:57:21 newfile
 -rw-r--r-- root/root       151 2020-07-05 23:19:13 readme.txt
--rw-r--r-- root/root        52 2024-08-13 09:39:06 urllist.txt
+-rw-r--r-- root/root        52 2024-08-16 10:09:28 urllist.txt
 ```
 
 tar -xvf backup.tar
@@ -617,11 +625,15 @@ tar -xvf backup.tar
 backupdir/
 backupdir/backup.tar
 bench.py
+file1
+file11
+file2
 file21
 file22
 file23
 hello.c
 hello.js
+newfile
 readme.txt
 urllist.txt
 ```
@@ -654,7 +666,11 @@ stop
 
 cat herecheck.txt
 ## OUTPUT
-
+```
+hello in this world
+i cant stop
+for this non stop movement
+```
 
 cat < scriptest.sh 
 ```bash
@@ -692,25 +708,77 @@ chmod 777 scriptest.sh
 ./scriptest.sh 1 2 3
 
 ## OUTPUT
-
- 
+```
+./scriptest.sh: line 1: #!/bin/sh: not found
+“File name is ./scriptest.sh ”
+File name is  scriptest.sh
+“First arg. is ” 1
+“Second arg. is ” 2
+“Third arg. is ” 3
+“Fourth arg. is ”
+The $@ is  1 2 3
+The $\# is  1#
+The $$ is  200
+PID   USER     TIME  COMMAND
+    1 root      0:01 {init} /bin/sh /sbin/init
+    2 root      0:00 [kthreadd]
+    3 root      0:00 [kworker/0:0]
+    4 root      0:00 [kworker/0:0H]
+    5 root      0:00 [kworker/u2:0]
+    6 root      0:00 [mm_percpu_wq]
+    7 root      0:00 [ksoftirqd/0]
+    8 root      0:00 [kdevtmpfs]
+    9 root      0:00 [oom_reaper]
+   10 root      0:00 [writeback]
+   11 root      0:00 [kcompactd0]
+   12 root      0:00 [crypto]
+   13 root      0:00 [bioset]
+   14 root      0:00 [kblockd]
+   15 root      0:00 [kworker/0:1]
+   16 root      0:00 [kswapd0]
+   17 root      0:00 [bioset]
+   34 root      0:00 [khvcd]
+   35 root      0:00 [bioset]
+   36 root      0:00 [bioset]
+   37 root      0:00 [bioset]
+   38 root      0:00 [bioset]
+   39 root      0:00 [bioset]
+   40 root      0:00 [bioset]
+   41 root      0:00 [bioset]
+   42 root      0:00 [bioset]
+   55 root      0:00 settime -d /
+   56 root      0:00 dhcpcd -q
+   61 root      0:00 sh -l
+   62 root      0:00 [kworker/u2:1]
+  200 root      0:00 {busybox} ash ./scriptest.sh 1 2 3
+  203 root      0:00 ps
+ ```
 ls file1
 ## OUTPUT
-
+```
+file1
+```
 echo $?
-## OUTPUT 
+## OUTPUT
+```
+0
+```
 ./one
 bash: ./one: Permission denied
  
 echo $?
 ## OUTPUT 
- 
+ ```
+127
+```
 abcd
  
 echo $?
  ## OUTPUT
 
-
+```
+127
+```
  
 # mis-using string comparisons
 
@@ -729,6 +797,7 @@ fi
 ```
 
 cat strcomp.sh 
+## OUTPUT
 ```bash
 \#!/bin/bash
 val1=baseball
@@ -740,15 +809,16 @@ else
 echo "$val1 is less than $val2"
 fi
 ```
-##OUTPUT
-
-
 
 chmod 755 strcomp.sh
  
 ./strcomp.sh 
 ## OUTPUT
-
+```
+./strcomp.sh: line 1: #!/bin/bash: not found
+baseball is less than hockey
+./strcomp.sh: line 10: ^d: not found
+```
 
 # check file ownership
 cat < psswdperm.sh 
@@ -773,11 +843,22 @@ else
 echo “Sorry, you are not the owner of the /etc/passwd file”
 fi
  ```
-./psswdperm.sh
+cat psswdperm.sh 
 ## OUTPUT
+```
+bash
+\#!/bin/bash
+if [ -O /etc/passwd ]
+then
+echo “You are the owner of the /etc/passwd file”
+else
+echo “Sorry, you are not the owner of the /etc/passwd file”
+fi
+```
 
 # check if with file location
-cat>ifnested.sh 
+cat>ifnested.sh
+
 ```bash
 \#!/bin/bash
 if [ -e $HOME ]
@@ -800,6 +881,7 @@ fi
 ```
 cat ifnested.sh 
 ```
+bash
 \#!/bin/bash
 if [ -e $HOME ]
 then
@@ -821,7 +903,9 @@ fi
 
 ./ifnested.sh 
 ## OUTPUT
-
+```
+sh: ./ifnested.sh: Permission denied
+```
 
 
 # using numeric test comparisons
