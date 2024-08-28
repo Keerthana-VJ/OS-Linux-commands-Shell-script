@@ -2,6 +2,8 @@
 Operating systems Lab exercise
 # Linux commands-Shell scripting
 Linux commands-Shell scripting
+## NAME: KEERTHANA.V
+## REGISTER NO: 212223220045
 
 # AIM:
 To practice Linux Commands and Shell Scripting
@@ -729,7 +731,7 @@ The $$ is  5564
 ls file1
 ## OUTPUT
 ```
-file1
+file1  file2  file3
 ```
 echo $?
 ## OUTPUT
@@ -742,7 +744,7 @@ bash: ./one: Permission denied
 echo $?
 ## OUTPUT 
  ```
-127
+126
 ```
 abcd
  
@@ -756,7 +758,7 @@ echo $?
 # mis-using string comparisons
 
 cat < strcomp.sh 
-```bash
+```
 \#!/bin/bash
 val1=baseball
 val2=hockey
@@ -771,7 +773,7 @@ fi
 
 cat strcomp.sh 
 ## OUTPUT
-```bash
+```
 \#!/bin/bash
 val1=baseball
 val2=hockey
@@ -788,14 +790,12 @@ chmod 755 strcomp.sh
 ./strcomp.sh 
 ## OUTPUT
 ```
-./strcomp.sh: line 1: #!/bin/bash: not found
 baseball is less than hockey
-./strcomp.sh: line 10: ^d: not found
 ```
 
 # check file ownership
 cat < psswdperm.sh 
-```bash
+```
 \#!/bin/bash
 if [ -O /etc/passwd ]
 then
@@ -807,7 +807,7 @@ fi
 ```
 
 cat psswdperm.sh 
-```bash
+```
 /#!/bin/bash
 if [ -O /etc/passwd ]
 then
@@ -816,23 +816,16 @@ else
 echo “Sorry, you are not the owner of the /etc/passwd file”
 fi
  ```
-cat psswdperm.sh 
+./psswdperm.sh
 ## OUTPUT
 ```
-bash
-\#!/bin/bash
-if [ -O /etc/passwd ]
-then
-echo “You are the owner of the /etc/passwd file”
-else
-echo “Sorry, you are not the owner of the /etc/passwd file”
-fi
+Sorry, you are not the owner of the /etc/passwd file
 ```
 
 # check if with file location
 cat>ifnested.sh
 
-```bash
+```
 \#!/bin/bash
 if [ -e $HOME ]
 then
@@ -854,7 +847,6 @@ fi
 ```
 cat ifnested.sh 
 ```
-bash
 \#!/bin/bash
 if [ -e $HOME ]
 then
@@ -877,13 +869,15 @@ fi
 ./ifnested.sh 
 ## OUTPUT
 ```
-sh: ./ifnested.sh: Permission denied
+“/home/sec The object exists, is it a file?”
+“No,/home/sec it is not a file!”
+“But /home/sec/.bash_history is a file!”
 ```
 
 
 # using numeric test comparisons
 cat > iftest.sh 
-```bash
+```
 \#!/bin/bash
 val1=10
 val2=11
@@ -902,7 +896,7 @@ fi
 
 
 cat iftest.sh 
-```bash
+```
 \#!/bin/bash
 val1=10
 val2=11
@@ -921,11 +915,14 @@ fi
 $ chmod 755 iftest.sh
  
 $ ./iftest.sh 
-##OUTPUT
-
+## OUTPUT
+```
+“The test value 10 is greater than 5”
+“The values are different”
+```
 # check if a file
 cat > ifnested.sh 
-```bash
+```
 \#!/bin/bash
 if [ -e $HOME ]
 then
@@ -947,7 +944,7 @@ fi
 ```
 
 cat ifnested.sh 
-```bash
+```
 \#!/bin/bash
 if [ -e $HOME ]
 then
@@ -970,11 +967,15 @@ fi
 $ chmod 755 ifnested.sh
  
 $ ./ifnested.sh 
-##OUTPUT
-
+## OUTPUT
+```
+“/home/sec The object exists, is it a file?”
+“No,/home/sec it is not a file!”
+“But /home/sec/.bash_history is a file!”
+```
 # looking for a possible value using elif
 cat elifcheck.sh 
-```bash
+```
 \#!/bin/bash
 if [ $USER = Ram ]
 then
@@ -1000,10 +1001,12 @@ $ chmod 755 elifcheck.sh
 $ ./elifcheck.sh 
 ## OUTPUT
 
-
+```
+Sorry, you are not allowed here
+```
 # testing compound comparisons
 cat> ifcompound.sh 
-```bash
+```
 \#!/bin/bash
 if [ -d $HOME ] && [ -w $HOME ]
 then
@@ -1015,10 +1018,12 @@ fi
 $ chmod 755 ifcompound.sh
 $ ./ifcompound.sh 
 ## OUTPUT
-
+```
+The file exists and you can write to it
+```
 # using the case command
 cat >casecheck.sh 
-```bash
+```
 case $USER in
 Ram | Robert)
 echo "Welcome, $USER"
@@ -1034,9 +1039,13 @@ esac
 $ chmod 755 casecheck.sh 
  
 $ ./casecheck.sh 
- 
+## OUTPUT
+```
+Sorry, you are not allowed here
+```
+
 cat > whiletest
-```bash
+```
 #!/bin/bash
 #while command test
 var1=10
@@ -1049,10 +1058,22 @@ done
 $ chmod 755 whiletest.sh
  
 $ ./whiletest.sh
- 
+## OUTPUT
+```
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+```
  
 cat untiltest.sh 
-```bash
+```
 \#using the until command
 var1=100
 until [ $var1 -eq 0 ]
@@ -1062,11 +1083,17 @@ var1=$[ $var1 - 25 ]
 done
 ``` 
 $ chmod 755 untiltest.sh
- 
+## OUTPUT
+```
+100
+75
+50
+25
+```
  
  
 cat forin1.sh 
-```bash
+```
 \#!/bin/bash
 \#basic for command
 for test in Alabama Alaska Arizona Arkansas California Colorado
@@ -1076,10 +1103,18 @@ done
  ```
  
 $ chmod 755 forin1.sh
- 
+## OUTPUT
+```
+The next state is Alabama
+The next state is Alaska
+The next state is Arizona
+The next state is Arkansas
+The next state is California
+The next state is Colorado
+```
  
 cat forin2.sh 
-```bash
+```
 \#!/bin/bash
 \# another example of how not to use the for command
 for test in I don't know if this'll work
@@ -1089,22 +1124,16 @@ done
  ```
  
 $ chmod 755 forin2.sh
- 
-cat forin2.sh 
-```bash
-\#!/bin/bash
-\# another example of how not to use the for command
-for test in I don't know if this'll work
-do
-echo “word:$test”
-done
+## OUTPUT
 ```
-$ chmod 755 forin2.sh
- 
-$ ./forin2.sh 
+“word:I”
+“word:dont know if thisll”
+“word:work”
+```
+
  
 cat forin3.sh 
-```bash
+```
 \#!/bin/bash
 \# another example of how not to use the for command
 for test in I don\'t know if "this'll" work
@@ -1113,9 +1142,17 @@ echo "word:$test"
 done
 ```
 $ ./forin3.sh 
- 
+## OUTPUT
+```
+word:I
+word:don't
+word:know
+word:if
+word:this'll
+word:work
+```
 cat forin1.sh 
-```bash
+```
 #!/bin/bash
 # basic for command
 for test in Alabama Alaska Arizona Arkansas California Colorado
@@ -1124,6 +1161,13 @@ echo The next state is $test
 done
 ```
 $ chmod 755 forin1.sh
+```
+The next state is Alaska
+The next state is Arizona
+The next state is Arkansas
+The next state is California
+The next state is Colorado
+```
 
 ## OUTPUT
 cat forinfile.sh 
@@ -1147,10 +1191,18 @@ Bhadrachalam
 Khammam
 
 ## OUTPUT
-
+```
+Visit beautiful Hyderabad
+Visit beautiful Alampur
+Visit beautiful Basara
+Visit beautiful Warangal
+Visit beautiful Adilabad
+Visit beautiful Bhadrachalam
+Visit beautiful Khammam
+```
 
 cat forctype.sh 
-```bash
+```
 #!/bin/bash
 # testing the C-style for loop
 for (( i=1; i <= 5; i++ ))
@@ -1161,7 +1213,13 @@ done
 $ chmod 755 forctype.sh
 $ ./forctype.sh 
 ## OUTPUT
-
+```
+The value of i is 1
+The value of i is 2
+The value of i is 3
+The value of i is 4
+The value of i is 5
+```
 cat forctype1.sh 
 ```bash
 #!/bin/bash
@@ -1174,9 +1232,16 @@ done
 $ chmod 755 forctype.sh
 $ ./forctype1.sh 
 ## OUTPUT
+```
+1 - 5
+2 - 4
+3 - 3
+4 - 2
+5 - 1
+```
 
 cat fornested1.sh 
-```bash
+```
 #!/bin/bash
 # nesting for loops
 for (( a = 1; a <= 3; a++ ))
@@ -1192,10 +1257,23 @@ $ chmod 755 fornested1.sh
  
 $ ./fornested1.sh 
  ## OUTPUT
-
+```
+Starting loop 1:
+Inside loop: 1
+Inside loop: 2
+Inside loop: 3
+Starting loop 2:
+Inside loop: 1
+Inside loop: 2
+Inside loop: 3
+Starting loop 3:
+Inside loop: 1
+Inside loop: 2
+Inside loop: 3
+```
  
 cat forbreak.sh 
-```bash
+```
 #!/bin/bash
 # breaking out of a for loop
 for var1 in 1 2 3 4 5
@@ -1208,14 +1286,20 @@ echo "Iteration number: $var1"
 done
 echo "The for loop is completed“
 ```
-## OUTPUT
+
 
 $ chmod 755 forbreak.sh
  
 $ ./forbreak.sh 
- 
+## OUTPUT
+```
+Iteration number: 1
+Iteration number: 2
+The for loop is completed
+```
+
 cat forbreak.sh 
-```bash
+```
 #!/bin/bash
 # breaking out of a for loop
 for var1 in 1 2 3 4 5
@@ -1234,9 +1318,16 @@ $ chmod 755 forcontinue.sh
  
 $ ./forcontinue.sh 
 ## OUTPUT
+```
+Iteration number: 1
+Iteration number: 2
+Iteration number: 4
+Iteration number: 5
+The for loop is completed
+```
  
 cat exread.sh 
-```bash
+```
 #!/bin/bash
 # testing the read command
 echo -n "Enter your name: "
@@ -1248,25 +1339,30 @@ $ chmod 755 exread.sh
  
 $ ./exread.sh 
 ## OUTPUT
-
+```
+Enter your name: Keerthana
+Hello keerthana, welcome to my program.
+```
 
  cat exread1.sh
-```bash
+```
 #!/bin/bash
 # testing the read command
 read -p "Enter your name: " name
 echo "Hello $name, welcome to my program. “
 ``` 
 $ chmod 755 exread1.sh 
+$ ./exread1.sh 
 
 ## OUTPUT
+```
+Enter your name: Keerthi
+Hello Keerthi, welcome to my program.
+```
 
-
-
-$ ./exread1.sh 
  
 cat funcex.sh
-```bash
+```
 #!/bin/bash
 # trying to access script parameters inside a function
 function func {
@@ -1282,13 +1378,13 @@ fi
 ```
 ## OUTPUT
  ./funcex.sh 
-
- 
- ./funcex.sh 1 2
-
+  ./funcex.sh 1 2
+```
+The result is 2
+```
  
 cat argshift.sh
-```bash
+```
 #!/bin/bash 
  while (( "$#" )); do 
   echo $1 
@@ -1296,12 +1392,17 @@ cat argshift.sh
 done
 ```
 $ chmod 777 argshift.sh
-
-## OUTPUT
 $ ./argshift.sh 1 2 3
+## OUTPUT
+```
+1
+2
+3
+```
+
  
  cat argshift1.sh
-```bash
+```
  #/bin/bash 
  # store arguments in a special array 
 args=("$@") 
@@ -1314,8 +1415,13 @@ for (( i=0;i<$ELEMENTS;i++)); do
 done
 ```
 $ chmod 777 argshift.sh
-## OUTPUT
 $ ./argshift.sh 1 2 3
+## OUTPUT
+```
+1
+2
+3
+```
  
 cat argshift.sh
 ```bash
@@ -1327,12 +1433,28 @@ while (( "$#" )); do
 done
 set +x
 ```
+./argshift.sh 1 2 3
 ## OUTPUT
- ./argshift.sh 1 2 3
  
+ ```
+++ ((  3  ))
+++ echo 1
+1
+++ shift
+++ ((  2  ))
+++ echo 2
+2
+++ shift
+++ ((  1  ))
+++ echo 3
+3
+++ shift
+++ ((  0  ))
+++ set +x
+```
  
 cat > nc.awk
-```bash
+```
 BEGIN{}
 {
 print len=length($0),"\t",$0 
@@ -1360,6 +1482,22 @@ ubcdfghj
 ```
 awk -f nc.awk data.dat
 ## OUTPUT 
+```
+4 	 bash
+7 	 bcdfghj
+8 	 abcdfghj
+7 	 bcdfghj
+8 	 ebcdfghj
+7 	 bcdfghj
+8 	 ibcdfghj
+7 	 bcdfghj
+8 	 obcdfghj
+7 	 bcdfghj
+8 	 ubcdfghj
+total characters 79
+Number of Lines are 11
+No of Words count: 11
+```
  
 cat > palindrome.sh
 ```bash
@@ -1387,7 +1525,11 @@ else
 fi
 ```
 ## OUTPUT 
-
+```
+Enter the number
+5
+Number is palindrome
+```
 
 # RESULT:
 The Commands are executed successfully.
